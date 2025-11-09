@@ -1,0 +1,78 @@
+<div class="d-flex justify-content-center align-items-center vh-100 bg-light">
+  <div class="card shadow-lg p-4" style="width: 400px; border-radius: 15px;">
+    <h3 class="text-center mb-4 text-primary">Register</h3>
+
+  <form (ngSubmit)="onRegister()">
+      <!-- Username -->
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input
+          type="text"
+          id="username"
+          class="form-control"
+          [(ngModel)]="username"
+          name="username"
+          required
+          placeholder="Enter your username"
+        />
+        <div *ngIf="registerForm.submitted && !username" class="text-danger small mt-1">
+          Username is required.
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input
+          type="password"
+          id="password"
+          class="form-control"
+          [(ngModel)]="password"
+          name="password"
+          required
+          placeholder="Enter your password"
+        />
+        <div *ngIf="registerForm.submitted && !password" class="text-danger small mt-1">
+          Password is required.
+        </div>
+      </div>
+
+      <!-- Confirm Password -->
+      <div class="mb-3">
+        <label for="confirmPassword" class="form-label">Confirm Password</label>
+        <input
+          type="password"
+          id="confirmPassword"
+          class="form-control"
+          [(ngModel)]="confirmPassword"
+          name="confirmPassword"
+          required
+          placeholder="Confirm your password"
+        />
+        <div
+          *ngIf="registerForm.submitted && confirmPassword && password !== confirmPassword"
+          class="text-danger small mt-1"
+        >
+          Passwords do not match.
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn-primary w-100 py-2">
+        Register
+      </button>
+
+      <!-- Messages -->
+      <div *ngIf="errorMessage" class="text-danger text-center mt-3">
+        {{ errorMessage }}
+      </div>
+      <div *ngIf="successMessage" class="text-success text-center mt-3">
+        {{ successMessage }}
+      </div>
+    </form>
+
+    <div class="text-center mt-3">
+      <a routerLink="/login" class="text-decoration-none">Already have an account? Login</a>
+    </div>
+  </div>
+</div>

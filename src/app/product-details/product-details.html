@@ -1,0 +1,39 @@
+<!-- src/app/components/product-detail/product-detail.component.html -->
+<!-- <div *ngIf="isLoading">Loading product details...</div>
+
+<div *ngIf="!isLoading && product" class="product-detail">
+  <img *ngIf="product.imageUrl" [src]="product.imageUrl" alt="{{ product.name }}" />
+
+  <h2>{{ product.name }}</h2>
+  <p>{{ product.description }}</p>
+
+  <h3>Price: ₹{{ product.price }}</h3>
+  <p>Stock: {{ product.stock }}</p>
+
+  <button>Add to Cart</button>
+</div>
+
+<div *ngIf="!isLoading && errorMessage" class="error">
+  {{ errorMessage }}
+</div> -->
+
+
+<div class="card h-100 shadow-sm">
+  <img 
+    [src]="product?.imageUrl"
+    class="card-img-top" height="80px" width="120"
+    alt="{{ product?.name }}" 
+  />
+  <div class="card-body">
+    <h5 class="card-title">{{ product?.name }}</h5>
+    <p class="card-text text-muted">{{ product?.description }}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><strong>Price:</strong> ₹{{ product?.price }}</li>
+    <li class="list-group-item"><strong>Stock:</strong> {{ product?.stock }}</li>
+    <li class="list-group-item"><strong>Category ID:</strong> {{ product?.categoryId }}</li>
+  </ul>
+  <div class="card-footer text-center">
+    <button class="btn btn-primary btn-sm">Add to Cart</button>
+  </div>
+</div>

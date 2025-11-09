@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<div class="row">
+    <div *ngFor="let p of products" class="col-md-4 mb-3">
+      <div class="card">
+        <img *ngIf="p.imageUrl" class="card-img-top"  alt="{{p.name}}">
+        <div class="card-body">
+          <h5>{{p.name}}</h5>
+          <p>{{p.description}}</p>
+          <p><strong>₹{{p.price}}</strong></p>
+          <button class="btn btn-primary" (click)="addToCart(p)">Add to cart</button>
+          <a [routerLink]="['/product', p.id]" class="btn btn-link">Details</a>
+        </div>
+                  <!-- <a routerLink="/home" class="btn btn-link">Details</a> -->
+
+      </div>
+    </div>
+  </div>  
+</body>
+</html>

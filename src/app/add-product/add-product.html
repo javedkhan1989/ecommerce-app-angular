@@ -1,0 +1,61 @@
+<!-- src/app/components/add-product/add-product.component.html -->
+<div class="add-product-container">
+  <h2>Add New Product</h2>
+
+  <form (ngSubmit)="onSubmit()">
+    <div>
+      <label>Product Name</label>
+      <input [(ngModel)]="product.name" name="name" required />
+    </div>
+
+    <div>
+      <label>Description</label>
+      <textarea [(ngModel)]="product.description" name="description"></textarea>
+    </div>
+
+    <div>
+      <label>Price</label>
+      <input type="number" [(ngModel)]="product.price" name="price" required />
+    </div>
+
+    <div>
+      <label>Stock</label>
+      <input type="number" [(ngModel)]="product.stock" name="stock" />
+    </div>
+
+    <!-- <div>
+      <label>Category ID</label>
+      <input type="number" [(ngModel)]="product.categoryId" name="categoryId" required />
+    </div> -->
+
+    <!-- <div>
+      <label for="country">Choose a country:</label>
+      <select id="country" name="country"   class="form-select">
+        <option value="india">India</option>
+        <option value="usa">United States</option>
+        <option value="uk">United Kingdom</option>
+        <option value="canada">Canada</option>
+      </select>
+    </div> -->
+
+    <div>
+      <label>Category</label>
+      <select  class="form-select" [(ngModel)]="product.categoryId" name="categoryId">
+        <option value="">-- Select Category --</option>
+        <option *ngFor="let c of categories" [value]="c.id">
+          {{ c.name }}
+        </option>
+      </select>
+    </div>
+
+    <div>
+      <label>Image URL (optional)</label>
+      <input [(ngModel)]="product.imageUrl" name="imageUrl" />
+    </div>
+
+    <button type="submit">Add Product</button>
+
+    <div *ngIf="successMessage" style="color: green;">{{ successMessage }}</div>
+    <div *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</div>
+  </form>
+</div>
